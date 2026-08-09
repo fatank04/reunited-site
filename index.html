@@ -11,6 +11,17 @@
 <link rel="icon" type="image/png" href="assets/icon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Detail crop: the named-rep chip, shown without repeating the hero phone */
+  .detail {
+    width: min(340px, 86vw); height: 360px; margin: 0 auto;
+    border-radius: 28px; overflow: hidden; box-shadow: var(--shadow);
+    background: var(--card);
+  }
+  .detail img {
+    width: 130%; margin-left: -15%; margin-top: -52%; display: block;
+  }
+</style>
 </head>
 <body>
 
@@ -21,80 +32,89 @@
   </nav>
 </div>
 
-<header class="wrap" style="padding: 40px 24px 20px;">
-  <div class="feature" style="padding: 20px 0;">
-    <div>
+<header class="hero wrap">
+  <div class="feature" style="padding-block: 0;">
+    <div class="copy hero-copy">
       <h1>One small social rep a day.</h1>
-      <p class="lede" style="margin: 20px 0 28px;">
+      <p class="lede">
         Relationships fade by default. Kin is two minutes a day against the
         drift: one prompt, one person, one message that actually gets sent.
       </p>
       <span class="btn soon">Coming soon to the App&nbsp;Store</span>
-      <p class="dim small" style="margin-top: 14px;">
+      <p class="dim small beta-line">
         Now in private beta. <a href="support.html" style="color: var(--ember);">Ask for an invite</a>.
       </p>
     </div>
-    <img class="phone" src="assets/shot-today.png"
-         alt="Kin's daily rep screen: a Go Deeper prompt with a suggested person to send it to">
+    <div class="phone-slot">
+      <img class="phone" src="assets/shot-today.png"
+           alt="Kin's daily rep screen: a Go Deeper prompt with a suggested person to send it to">
+    </div>
   </div>
 </header>
 
 <section class="wrap">
   <div class="card evidence">
-    <span class="big">86</span>
-    <span style="font-family: var(--serif); font-size: 1.25rem; font-weight: 600;">
-      years of evidence</span>
-    <p class="dim" style="margin-top: 10px;">
+    <div class="stat">
+      <span class="big">86</span>
+      <span class="stat-label">years of evidence</span>
+    </div>
+    <p class="dim">
       The world's longest study of adult life has followed the same families
       since 1938. Its clearest finding: close relationships, more than wealth,
       fame, or class, keep people healthy and happy.
     </p>
-    <p class="small" style="color: var(--ember); font-weight: 600; margin-top: 10px;">
-      Harvard Study of Adult Development · Waldinger &amp; Schulz
-    </p>
+    <p class="cite">Harvard Study of Adult Development · Waldinger &amp; Schulz</p>
   </div>
 </section>
 
 <section class="wrap">
-  <h2>Four kinds of rep.</h2>
-  <p class="lede" style="margin-top: 12px;">A different muscle each day. Every one takes about two minutes.</p>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 30px;">
+  <div class="section-head">
+    <h2>Four kinds of rep.</h2>
+    <p class="lede">A different muscle each day. Every one takes about two minutes.</p>
+  </div>
+  <div class="card-grid cols-4">
     <div class="card">
       <span class="chip ember">Reconnect</span>
-      <p class="dim" style="margin-top: 12px;">Revive a tie that's going quiet, with an opener written for you.</p>
+      <p class="dim">Revive a tie that's going quiet, with an opener written for you.</p>
     </div>
     <div class="card">
       <span class="chip spruce">Go deeper</span>
-      <p class="dim" style="margin-top: 12px;">One question that gets past small talk with someone you love.</p>
+      <p class="dim">One question that gets past small talk with someone you love.</p>
     </div>
     <div class="card">
       <span class="chip rose">Say thanks</span>
-      <p class="dim" style="margin-top: 12px;">Send the compliment you keep not sending.</p>
+      <p class="dim">Send the compliment you keep not sending.</p>
     </div>
     <div class="card">
       <span class="chip ochre">In person</span>
-      <p class="dim" style="margin-top: 12px;">Saturdays ask for presence, not text. Coffee beats fifty messages.</p>
+      <p class="dim">Saturdays ask for presence, not text. Coffee beats fifty messages.</p>
     </div>
   </div>
 </section>
 
 <section class="wrap">
   <div class="feature">
-    <div>
+    <div class="copy">
       <div class="num">01</div>
       <h2>It names the person, not just the task.</h2>
       <p>"Reconnect with an old friend" still leaves the hard part to you.
       Kin says who: whoever in your circle has drifted longest. Tap once and
       the message is drafted. You edit until it sounds like you, then send.</p>
     </div>
-    <img class="phone" src="assets/shot-today.png"
-         alt="A rep card suggesting a specific person: Today, Marcus? Five weeks quiet.">
+    <div class="phone-slot">
+      <div class="detail">
+        <img src="assets/shot-today.png"
+             alt="Close-up of the named suggestion: Today, Marcus? Five weeks quiet.">
+      </div>
+    </div>
   </div>
 
   <div class="feature">
-    <img class="phone" src="assets/shot-embers.png"
-         alt="The hearth screen: each person in your circle as an ember that glows when you reach out">
-    <div>
+    <div class="phone-slot">
+      <img class="phone" src="assets/shot-embers.png"
+           alt="The hearth screen: each person in your circle as an ember that glows when you reach out">
+    </div>
+    <div class="copy">
       <div class="num">02</div>
       <h2>Your people, as embers.</h2>
       <p>Everyone you're keeping lights an ember. Send a rep and it glows.
@@ -104,21 +124,25 @@
   </div>
 
   <div class="feature">
-    <div>
+    <div class="copy">
       <div class="num">03</div>
       <h2>Stuck on a reply? It happens to everyone.</h2>
       <p>They wrote back. You froze. Share their message to Kin and get three
       short ways to answer, written by AI that runs entirely on your iPhone.
       The message never leaves your phone, and the send is always yours.</p>
     </div>
-    <img class="phone" src="assets/shot-plan.png"
-         alt="Plan something: coffee spots near Montclair ranked by rating with a drafted invite">
+    <div class="phone-slot">
+      <img class="phone" src="assets/shot-coach.png"
+           alt="Stuck on a reply: paste their message and get three ways to answer">
+    </div>
   </div>
 
   <div class="feature">
-    <img class="phone" src="assets/shot-plan.png"
-         alt="Plan something screen with Yelp-rated coffee spots and a Text-the-plan button">
-    <div>
+    <div class="phone-slot">
+      <img class="phone" src="assets/shot-plan.png"
+           alt="Plan something: coffee spots near Montclair ranked by rating, with a drafted invite">
+    </div>
+    <div class="copy">
       <div class="num">04</div>
       <h2>Then take it off the screen.</h2>
       <p>Pick a person and a plan. Kin finds a well-reviewed spot nearby and
@@ -129,41 +153,41 @@
 </section>
 
 <section class="wrap">
-  <div class="card" style="max-width: 640px; margin: 0 auto; text-align: center; padding: 40px;">
+  <div class="card sample">
     <span class="chip spruce">Today's rep</span>
-    <p style="font-family: var(--serif); font-size: 1.7rem; font-weight: 600; line-height: 1.3; margin-top: 16px;">
-      Ask a parent what they were like at your exact age.
-    </p>
-    <p class="dim" style="margin-top: 12px;">
-      Not what they did. What they were LIKE. Worried about what? Proud of what?
-    </p>
+    <p class="rep">Ask a parent what they were like at your exact age.</p>
+    <p class="dim">Not what they did. What they were LIKE. Worried about what? Proud of what?</p>
   </div>
 </section>
 
 <section class="wrap">
-  <h2>Private by architecture, not by promise.</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 30px;">
+  <div class="section-head">
+    <h2>Private by architecture, not by promise.</h2>
+  </div>
+  <div class="card-grid cols-3">
     <div class="card">
       <h3>Your contacts stay yours.</h3>
-      <p class="dim" style="margin-top: 8px;">Kin never asks for Contacts permission. You hand it individual people
+      <p class="dim">Kin never asks for Contacts permission. You hand it individual people
       through Apple's picker; it cannot see the rest of your address book.</p>
     </div>
     <div class="card">
       <h3>No account. No server.</h3>
-      <p class="dim" style="margin-top: 8px;">Nothing to sign up for, nothing to breach. Your circle, streaks, and
+      <p class="dim">Nothing to sign up for, nothing to breach. Your circle, streaks, and
       answers live on your phone and nowhere else.</p>
     </div>
     <div class="card">
       <h3>AI that stays home.</h3>
-      <p class="dim" style="margin-top: 8px;">Reply suggestions run on Apple's on-device model. The texts you're
+      <p class="dim">Reply suggestions run on Apple's on-device model. The texts you're
       answering are never uploaded, to us or anyone.</p>
     </div>
   </div>
 </section>
 
 <section class="wrap" id="pricing">
-  <h2>Free forever. Kin+ if you want more.</h2>
-  <p class="lede" style="margin: 12px 0 30px;">Nothing you get for free ever moves behind the paywall. That's a pledge, in writing.</p>
+  <div class="section-head">
+    <h2>Free forever. Kin+ if you want more.</h2>
+    <p class="lede">Nothing you get for free ever moves behind the paywall. That's a pledge, in writing.</p>
+  </div>
   <div class="plans">
     <div class="card">
       <h3>Free</h3>
@@ -177,7 +201,7 @@
     </div>
     <div class="card">
       <h3>Kin+</h3>
-      <p class="price" style="margin-top: 6px;">$39.99/yr</p>
+      <p class="price">$39.99/yr</p>
       <p class="dim small">after a 7-day free trial · or $89.99 once, forever</p>
       <ul>
         <li>Your circle, with reps aimed by name</li>
@@ -190,9 +214,9 @@
   </div>
 </section>
 
-<section class="wrap" id="get" style="text-align: center; padding-bottom: 90px;">
+<section class="wrap cta" id="get">
   <h2>Someone's going to hear from you.</h2>
-  <p class="lede" style="margin: 14px auto 30px;">Kin is in private beta ahead of its App Store release.</p>
+  <p class="lede">Kin is in private beta ahead of its App Store release.</p>
   <a class="btn primary" href="support.html">Ask for a beta invite</a>
 </section>
 
@@ -204,7 +228,7 @@
       <a href="support.html">Support</a>
     </div>
     <p>© 2026 Foresight Solutions Group LLC. Made in New Jersey.</p>
-    <p class="small" style="margin-top: 6px;">Spot ratings in Plan something come from Yelp.</p>
+    <p class="small">Spot ratings in Plan something come from Yelp.</p>
   </div>
 </footer>
 

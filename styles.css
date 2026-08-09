@@ -11,28 +11,67 @@
   --spruce: #2f7e72;
   --rose: #b14a55;
   --ochre: #8a6b3d;
+
+  /* One spacing scale, used everywhere. No ad-hoc margins. */
+  --s1: 8px;
+  --s2: 12px;
+  --s3: 20px;
+  --s4: 32px;
+  --s5: 52px;
+  --s6: 84px;
+  --s7: 136px;
+
   --radius: 20px;
+  --shadow: 0 10px 32px rgba(42, 32, 24, 0.07);
   --serif: ui-serif, "New York", Georgia, "Times New Roman", serif; /* unslop-ignore: matches app's SF Serif */
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+  /* Gradient on html so it spans the full document without
+     background-attachment: fixed, which stutters on iOS Safari. */
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%) no-repeat;
+  background-size: 100% 100%;
+  min-height: 100%;
+}
+
 body {
   font-family: var(--sans);
   color: var(--ink);
-  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
-  background-attachment: fixed;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+.wrap { max-width: 1024px; margin: 0 auto; padding: 0 var(--s3); }
 
-/* Nav */
+/* ---------- Type scale: 1.25 ratio, three display sizes, no in-betweens */
+h1 {
+  font-family: var(--serif); font-weight: 600; letter-spacing: -0.015em;
+  font-size: clamp(2.5rem, 6.5vw, 3.8rem); line-height: 1.08;
+  text-wrap: balance;
+}
+h2 {
+  font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em;
+  font-size: clamp(1.65rem, 3.8vw, 2.3rem); line-height: 1.18;
+  text-wrap: balance;
+}
+h3 { font-size: 1.02rem; font-weight: 700; line-height: 1.35; }
+p { max-width: 34em; }
+.lede { font-size: 1.14rem; color: var(--dim); }
+.dim { color: var(--dim); }
+.small { font-size: 0.88rem; }
+
+/* Consistent gap after any heading block */
+h1 + p, h2 + p { margin-top: var(--s3); }
+h3 + p { margin-top: var(--s1); }
+
+/* ---------- Nav */
 nav {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 0;
+  padding: var(--s3) 0;
 }
 .wordmark {
   font-family: var(--serif); font-weight: 700; font-size: 1.7rem;
@@ -44,23 +83,14 @@ nav {
   padding: 10px 20px; border-radius: 14px;
 }
 
-/* Type */
-h1 {
-  font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em;
-  font-size: clamp(2.4rem, 6vw, 3.9rem); line-height: 1.12;
+/* ---------- Sections: one rhythm for the whole page */
+section, header.hero { padding-block: var(--s5); }
+@media (min-width: 761px) {
+  section, header.hero { padding-block: var(--s6); }
 }
-h2 {
-  font-family: var(--serif); font-weight: 600;
-  font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.2;
-}
-h3 { font-size: 1.05rem; font-weight: 700; }
-.lede { font-size: 1.15rem; color: var(--dim); max-width: 34em; }
-.dim { color: var(--dim); }
-.small { font-size: 0.88rem; }
+.section-head { margin-bottom: var(--s4); }
 
-section { padding: 64px 0; }
-
-/* Chips (rep types) */
+/* ---------- Chips (rep types) */
 .chip {
   display: inline-block; font-size: 0.7rem; font-weight: 800;
   letter-spacing: 0.13em; color: #fff; border-radius: 999px;
@@ -71,56 +101,93 @@ section { padding: 64px 0; }
 .chip.rose { background: var(--rose); }
 .chip.ochre { background: var(--ochre); }
 
-/* Cards */
+/* ---------- Cards */
 .card {
   background: var(--card); border-radius: var(--radius);
-  padding: 28px; box-shadow: 0 10px 32px rgba(42, 32, 24, 0.07);
+  padding: var(--s4); box-shadow: var(--shadow);
 }
+.card .chip + p { margin-top: var(--s2); }
+.card-grid { display: grid; gap: var(--s3); }
+.card-grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.card-grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 
-/* Evidence card, same motif as the app's onboarding */
-.evidence { position: relative; padding-left: 34px; max-width: 560px; }
-.evidence::before {
-  content: ""; position: absolute; left: 16px; top: 22px; bottom: 22px;
-  width: 3px; border-radius: 2px; background: var(--ember);
+/* ---------- Evidence card, same motif as the app's onboarding */
+.evidence {
+  border-left: 3px solid var(--ember);
+  max-width: 620px;
+  padding: var(--s4);
+}
+.evidence .stat {
+  display: flex; align-items: baseline; gap: var(--s2); flex-wrap: wrap;
 }
 .evidence .big {
-  font-family: var(--serif); font-weight: 700; font-size: 3.6rem;
+  font-family: var(--serif); font-weight: 700; font-size: 3.8rem;
   color: var(--ember); line-height: 1;
 }
+.evidence .stat-label {
+  font-family: var(--serif); font-size: 1.3rem; font-weight: 600;
+  white-space: nowrap;
+}
+.evidence p { margin-top: var(--s2); }
+.evidence .cite {
+  margin-top: var(--s2); font-size: 0.85rem; font-weight: 600;
+  color: var(--ember);
+}
 
-/* Feature rows */
+/* ---------- Feature rows */
 .feature {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
-  align-items: center; padding: 48px 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5);
+  align-items: center; padding-block: var(--s4);
 }
 .feature .num {
-  font-family: var(--serif); font-size: 1rem; color: var(--dim);
+  font-family: var(--serif); font-size: 0.95rem; color: var(--dim);
+  letter-spacing: 0.08em;
 }
-.feature h2 { margin: 6px 0 14px; }
-.feature p { color: var(--dim); max-width: 30em; }
+.feature .num + h2 { margin-top: var(--s1); }
+.feature h2 + p { margin-top: var(--s2); }
+.feature p { color: var(--dim); }
 @media (max-width: 760px) {
-  .feature { grid-template-columns: 1fr; gap: 24px; }
+  .feature { grid-template-columns: 1fr; gap: var(--s4); }
+  /* Text before image on mobile, whatever the desktop order */
+  .feature .phone-slot { order: 2; }
+  .feature .copy { order: 1; }
 }
 
-/* Phone frame */
+/* ---------- Phone frame */
 .phone {
-  width: min(320px, 82vw); margin: 0 auto; display: block;
+  width: min(300px, 78vw); margin: 0 auto; display: block;
   border-radius: 44px; border: 10px solid var(--ink);
-  box-shadow: 0 24px 60px rgba(42, 32, 24, 0.22);
+  box-shadow: 0 24px 60px rgba(42, 32, 24, 0.2);
 }
 
-/* Pricing */
-.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+/* ---------- Sample rep callout */
+.sample {
+  max-width: 640px; margin: 0 auto; text-align: center;
+  padding: var(--s5) var(--s4);
+}
+.sample .rep {
+  font-family: var(--serif); font-size: 1.65rem; font-weight: 600;
+  line-height: 1.3; margin-top: var(--s3);
+}
+.sample .rep + p { margin: var(--s2) auto 0; }
+
+/* ---------- Pricing */
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
 @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
-.plans ul { list-style: none; margin-top: 14px; }
-.plans li { padding: 6px 0 6px 26px; position: relative; color: var(--dim); }
+.plans ul { list-style: none; margin-top: var(--s3); }
+.plans li {
+  padding: 7px 0 7px 26px; position: relative; color: var(--dim);
+}
 .plans li::before {
-  content: ""; position: absolute; left: 4px; top: 14px;
+  content: ""; position: absolute; left: 4px; top: 16px;
   width: 8px; height: 8px; border-radius: 50%; background: var(--spruce);
 }
-.price { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; }
+.price {
+  font-family: var(--serif); font-size: 1.6rem; font-weight: 700;
+  margin-top: var(--s1);
+}
 
-/* Buttons */
+/* ---------- Buttons */
 .btn {
   display: inline-block; text-decoration: none; font-weight: 700;
   padding: 15px 30px; border-radius: 16px; font-size: 1rem;
@@ -131,16 +198,30 @@ section { padding: 64px 0; }
   cursor: default;
 }
 
-/* Footer */
+/* ---------- Hero */
+.hero-copy .lede { margin-top: var(--s3); }
+.hero-copy .btn { margin-top: var(--s4); }
+.hero-copy .beta-line { margin-top: var(--s2); }
+
+/* ---------- Final CTA */
+.cta { text-align: center; }
+.cta .lede { margin: var(--s3) auto 0; }
+.cta .btn { margin-top: var(--s4); }
+
+/* ---------- Footer */
 footer {
-  padding: 44px 0 60px; color: var(--dim); font-size: 0.9rem;
+  padding: var(--s5) 0 var(--s6); color: var(--dim); font-size: 0.9rem;
 }
 footer a { color: var(--dim); }
-footer .links { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 14px; }
+footer .links {
+  display: flex; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s2);
+}
+footer p + p { margin-top: var(--s1); }
 
-/* Legal pages */
-.legal { max-width: 680px; padding: 30px 0 70px; }
-.legal h1 { font-size: 2.2rem; margin-bottom: 8px; }
-.legal h2 { font-size: 1.3rem; margin: 34px 0 10px; }
-.legal p, .legal li { color: var(--dim); margin-bottom: 12px; }
+/* ---------- Legal pages */
+.legal { max-width: 680px; padding: var(--s4) 0 var(--s6); }
+.legal h1 { font-size: 2.2rem; }
+.legal h1 + .small { margin-top: var(--s1); }
+.legal h2 { font-size: 1.3rem; margin: var(--s4) 0 var(--s2); }
+.legal p, .legal li { color: var(--dim); margin-bottom: var(--s2); }
 .legal ul { padding-left: 22px; }
