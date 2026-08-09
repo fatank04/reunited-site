@@ -1,0 +1,146 @@
+/* Kin site — tokens ported 1:1 from the iOS app (Theme.swift). The dawn
+   palette and serif display are the app's locked identity, carried to the
+   web, not a template default. unslop-ignore */
+:root {
+  --bg-top: #fff6ec;      /* unslop-ignore: app brand token */
+  --bg-bottom: #fbe3cc;   /* unslop-ignore: app brand token */
+  --ink: #2a2018;
+  --dim: #6e5f4e;
+  --card: #ffffff;
+  --ember: #a85e2c;
+  --spruce: #2f7e72;
+  --rose: #b14a55;
+  --ochre: #8a6b3d;
+  --radius: 20px;
+  --serif: ui-serif, "New York", Georgia, "Times New Roman", serif; /* unslop-ignore: matches app's SF Serif */
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+  background-attachment: fixed;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 0;
+}
+.wordmark {
+  font-family: var(--serif); font-weight: 700; font-size: 1.7rem;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
+}
+.nav-cta {
+  font-size: 0.92rem; font-weight: 600; color: var(--bg-top);
+  background: var(--ink); text-decoration: none;
+  padding: 10px 20px; border-radius: 14px;
+}
+
+/* Type */
+h1 {
+  font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em;
+  font-size: clamp(2.4rem, 6vw, 3.9rem); line-height: 1.12;
+}
+h2 {
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.2;
+}
+h3 { font-size: 1.05rem; font-weight: 700; }
+.lede { font-size: 1.15rem; color: var(--dim); max-width: 34em; }
+.dim { color: var(--dim); }
+.small { font-size: 0.88rem; }
+
+section { padding: 64px 0; }
+
+/* Chips (rep types) */
+.chip {
+  display: inline-block; font-size: 0.7rem; font-weight: 800;
+  letter-spacing: 0.13em; color: #fff; border-radius: 999px;
+  padding: 5px 14px; text-transform: uppercase;
+}
+.chip.ember { background: var(--ember); }
+.chip.spruce { background: var(--spruce); }
+.chip.rose { background: var(--rose); }
+.chip.ochre { background: var(--ochre); }
+
+/* Cards */
+.card {
+  background: var(--card); border-radius: var(--radius);
+  padding: 28px; box-shadow: 0 10px 32px rgba(42, 32, 24, 0.07);
+}
+
+/* Evidence card, same motif as the app's onboarding */
+.evidence { position: relative; padding-left: 34px; max-width: 560px; }
+.evidence::before {
+  content: ""; position: absolute; left: 16px; top: 22px; bottom: 22px;
+  width: 3px; border-radius: 2px; background: var(--ember);
+}
+.evidence .big {
+  font-family: var(--serif); font-weight: 700; font-size: 3.6rem;
+  color: var(--ember); line-height: 1;
+}
+
+/* Feature rows */
+.feature {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  align-items: center; padding: 48px 0;
+}
+.feature .num {
+  font-family: var(--serif); font-size: 1rem; color: var(--dim);
+}
+.feature h2 { margin: 6px 0 14px; }
+.feature p { color: var(--dim); max-width: 30em; }
+@media (max-width: 760px) {
+  .feature { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* Phone frame */
+.phone {
+  width: min(320px, 82vw); margin: 0 auto; display: block;
+  border-radius: 44px; border: 10px solid var(--ink);
+  box-shadow: 0 24px 60px rgba(42, 32, 24, 0.22);
+}
+
+/* Pricing */
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+.plans ul { list-style: none; margin-top: 14px; }
+.plans li { padding: 6px 0 6px 26px; position: relative; color: var(--dim); }
+.plans li::before {
+  content: ""; position: absolute; left: 4px; top: 14px;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--spruce);
+}
+.price { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; }
+
+/* Buttons */
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 700;
+  padding: 15px 30px; border-radius: 16px; font-size: 1rem;
+}
+.btn.primary { background: var(--ink); color: var(--bg-top); }
+.btn.soon {
+  background: none; border: 1.5px solid var(--dim); color: var(--dim);
+  cursor: default;
+}
+
+/* Footer */
+footer {
+  padding: 44px 0 60px; color: var(--dim); font-size: 0.9rem;
+}
+footer a { color: var(--dim); }
+footer .links { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 14px; }
+
+/* Legal pages */
+.legal { max-width: 680px; padding: 30px 0 70px; }
+.legal h1 { font-size: 2.2rem; margin-bottom: 8px; }
+.legal h2 { font-size: 1.3rem; margin: 34px 0 10px; }
+.legal p, .legal li { color: var(--dim); margin-bottom: 12px; }
+.legal ul { padding-left: 22px; }
