@@ -45,7 +45,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.wrap { max-width: 1024px; margin: 0 auto; padding: 0 var(--s3); }
+/* Horizontal container only — never touches vertical rhythm, so it can
+   sit on the same element as a section. */
+.wrap { max-width: 1024px; margin-inline: auto; padding-inline: var(--s3); }
 
 /* ---------- Type scale: 1.25 ratio, three display sizes, no in-betweens */
 h1 {
