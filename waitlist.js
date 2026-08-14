@@ -13,7 +13,7 @@
 // privacy sentence on screen is true in both states — the same rule the app
 // follows with its own disclosures.
 (function () {
-  var WAITLIST_ENDPOINT = ''; // e.g. 'https://formspree.io/f/XXXXXXXX'
+  var WAITLIST_ENDPOINT = 'https://formspree.io/f/moealzez';
 
   function mailto(v) {
     location.href = 'mailto:support@reunited.day'
