@@ -44,7 +44,7 @@
       </p>
       <span class="btn soon">Coming soon to the App&nbsp;Store</span>
       <p class="dim small beta-line">
-        Now in private beta. <a href="support.html" style="color: var(--ember);">Ask for an invite</a>.
+        Now in private beta. <a href="#get" style="color: var(--ember);">Join the list</a>.
       </p>
     </div>
     <div class="phone-slot">
@@ -211,6 +211,8 @@
   <div class="plans">
     <div class="card">
       <h3>Free</h3>
+      <p class="price">$0<span class="per"> forever</span></p>
+      <p class="dim small">no trial to lapse, nothing to cancel</p>
       <ul>
         <li>The daily rep, every day</li>
         <li>Home-screen widget</li>
@@ -219,10 +221,11 @@
         <li>The evidence-based check-in</li>
       </ul>
     </div>
-    <div class="card">
+    <div class="card featured">
+      <span class="trial-chip">7-day free trial</span>
       <h3>Hearth</h3>
-      <p class="price">$39.99/yr</p>
-      <p class="dim small">after a 7-day free trial · or $89.99 once, forever</p>
+      <p class="price">$39.99<span class="per">/yr</span></p>
+      <p class="dim small">or $89.99 once, forever</p>
       <ul>
         <li>Your circle, with reps aimed by name</li>
         <li>One-tap sending with drafted openers</li>
@@ -238,7 +241,15 @@
   <h2>Reunited, and it feels so good.</h2>
   <p class="lede">It's been a hit song since 1979 because it's true. Reunited is in
   private beta ahead of its App Store release.</p>
-  <a class="btn primary" href="support.html">Ask for a beta invite</a>
+  <form class="waitlist" id="waitlist" autocomplete="on">
+    <input type="text" name="contact" id="contact" inputmode="email"
+           placeholder="Email or phone number" aria-label="Your email or phone number" required>
+    <button class="btn primary" type="submit">Join the beta</button>
+  </form>
+  <p class="dim small waitlist-note">
+    This opens an email to <a href="mailto:support@reunited.day">support@reunited.day</a>
+    from your own mail app. No form processors, no list you can't see.
+  </p>
 </section>
 
 <footer>
@@ -257,6 +268,21 @@
   // 1938 + n, same as the app. The "88" in the markup is the no-JS fallback.
   document.getElementById('evidence-years').textContent =
     Math.max(88, new Date().getFullYear() - 1938);
+
+  // The waitlist deliberately has no backend: the site has no server and the
+  // brand's whole position is that there is nothing to breach. Submitting
+  // composes an email in the visitor's own mail app, with what they typed in
+  // the body, so the exchange is theirs from the first message.
+  document.getElementById('waitlist').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = document.getElementById('contact').value.trim();
+    if (!v) return;
+    location.href = 'mailto:support@reunited.day'
+      + '?subject=' + encodeURIComponent('Reunited beta invite')
+      + '&body=' + encodeURIComponent(
+          'Please add me to the Reunited beta.\n\nReach me at: ' + v
+          + '\n\n(If you use TestFlight with a different email, say so here.)');
+  });
 </script>
 
 </body>

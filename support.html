@@ -6,6 +6,29 @@
 <title>Support — Reunited</title>
 <link rel="icon" type="image/png" href="assets/icon.png">
 <link rel="stylesheet" href="styles.css">
+<style>
+  .support-hero { max-width: 640px; padding-block: var(--s5) var(--s4); }
+  .email-card {
+    background: var(--card); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: var(--s4);
+    max-width: 640px; margin-bottom: var(--s3);
+  }
+  .email-card .address {
+    font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em;
+    font-size: clamp(1.25rem, 4vw, 1.7rem);
+    color: var(--ember); text-decoration: none; word-break: break-all;
+  }
+  .email-card p { margin-top: var(--s2); }
+  .facts { max-width: 640px; display: grid; gap: var(--s2); margin-block: var(--s4); }
+  .fact h3 { color: var(--ink); }
+  .fact p { color: var(--dim); }
+  .beta-card {
+    background: var(--card); border: 1.5px solid var(--ember);
+    border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: var(--s4); max-width: 640px; margin-block: var(--s4) var(--s6);
+  }
+  .beta-card .waitlist { justify-content: flex-start; margin-top: var(--s3); }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -14,28 +37,71 @@
     <a class="nav-cta" href="index.html#get">Get the app</a>
   </nav>
 
-  <div class="legal">
+  <header class="support-hero">
     <h1>Support</h1>
+    <p class="lede">A person answers, usually within a day.</p>
+  </header>
 
-    <h2>Get help or ask for a beta invite</h2>
-    <p>Email <a href="mailto:ankur.b.doshi+reunited@gmail.com">ankur.b.doshi+reunited@gmail.com</a>
-    and a human will answer, usually within a day or two.</p>
-
-    <h2>Before you write</h2>
-    <ul>
-      <li>Reunited keeps everything on your device, so there is no account to
-      recover and no password to reset.</li>
-      <li>Deleting the app deletes its data. There is no cloud copy we can
-      restore, by design.</li>
-      <li>Purchases and refunds are handled by Apple through your App Store
-      account.</li>
-    </ul>
-
-    <h2>Beta</h2>
-    <p>Reunited is in private beta ahead of its App Store release. If you want in,
-    say so in your email and include the email address you use with
-    TestFlight.</p>
+  <div class="email-card">
+    <a class="address" href="mailto:support@reunited.day">support@reunited.day</a>
+    <p class="dim">For anything: a bug, a question, a billing problem, or an idea.
+    Write in whatever language you think in.</p>
   </div>
+
+  <div class="facts">
+    <div class="fact">
+      <h3>There is no account to recover.</h3>
+      <p>Reunited keeps everything on your device, so there is no password to
+      reset and no login to unlock. If the app is on your phone, everything is.</p>
+    </div>
+    <div class="fact">
+      <h3>Deleting the app deletes its data.</h3>
+      <p>There is no cloud copy we can restore. That is the design, not an
+      accident, so uninstall with intent.</p>
+    </div>
+    <div class="fact">
+      <h3>Purchases and refunds go through Apple.</h3>
+      <p>Hearth is billed by the App Store. Manage or cancel it in your Apple
+      account settings; Apple handles refunds directly.</p>
+    </div>
+  </div>
+
+  <div class="beta-card">
+    <h2>Want into the beta?</h2>
+    <p class="dim">Reunited is in private beta ahead of its App Store release.
+    Leave an email or phone number and you'll hear back when a spot opens.</p>
+    <form class="waitlist" id="waitlist">
+      <input type="text" name="contact" id="contact" inputmode="email"
+             placeholder="Email or phone number" aria-label="Your email or phone number" required>
+      <button class="btn primary" type="submit">Join the beta</button>
+    </form>
+    <p class="dim small waitlist-note">Opens an email from your own mail app.
+    If you use TestFlight under a different address, mention it.</p>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="index.html">Home</a>
+    </div>
+    <p>© 2026 Foresight Solutions Group LLC. Made in New Jersey.</p>
+  </footer>
 </div>
+
+<script>
+  // Same no-backend waitlist as the landing page: composes an email in the
+  // visitor's own mail app so the site never holds anyone's contact info.
+  document.getElementById('waitlist').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = document.getElementById('contact').value.trim();
+    if (!v) return;
+    location.href = 'mailto:support@reunited.day'
+      + '?subject=' + encodeURIComponent('Reunited beta invite')
+      + '&body=' + encodeURIComponent(
+          'Please add me to the Reunited beta.\n\nReach me at: ' + v
+          + '\n\n(If you use TestFlight with a different email, say so here.)');
+  });
+</script>
 </body>
 </html>
