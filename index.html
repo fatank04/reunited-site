@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reunited — Stay in Touch Daily</title>
-<meta name="description" content="One small social rep a day. Reunited helps you keep the people you love from drifting away — a two-minute daily habit, built on 86 years of Harvard evidence.">
+<meta name="description" content="One small social rep a day. Reunited helps you keep the people you love from drifting away — a two-minute daily habit, built on 88 years of Harvard evidence.">
 <meta property="og:title" content="Reunited — Stay in Touch Daily">
 <meta property="og:description" content="One small social rep a day. Reconnect, go deeper, say thanks — before the drift wins.">
-<meta property="og:image" content="assets/shot-today.png">
+<meta property="og:url" content="https://reunited.day/">
+<meta property="og:image" content="https://reunited.day/assets/shot-today.png">
 <link rel="icon" type="image/png" href="assets/icon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="stylesheet" href="styles.css">
@@ -55,7 +56,11 @@
 <section class="wrap">
   <div class="card evidence">
     <div class="stat">
-      <span class="big">86</span>
+      <!-- 1938 + n. The app computes this (OnboardingView.yearsOfEvidence)
+           after shipping "86" into 2026; a static page can't, so the script
+           below keeps it honest and this literal is the no-JS fallback.
+           Bump it each January. -->
+      <span class="big" id="evidence-years">88</span>
       <span class="stat-label">years of evidence</span>
     </div>
     <p class="dim">
@@ -104,7 +109,7 @@
     <div class="phone-slot">
       <div class="detail">
         <img src="assets/shot-today.png"
-             alt="Close-up of the named suggestion: Today, Marcus? Five weeks quiet.">
+             alt="Close-up of the named suggestion: Today, Maya? First ember.">
       </div>
     </div>
   </div>
@@ -243,9 +248,15 @@
       <a href="support.html">Support</a>
     </div>
     <p>© 2026 Foresight Solutions Group LLC. Made in New Jersey.</p>
-    <p class="small">Spot ratings in Plan something come from Yelp.</p>
+    <p class="small">Spot listings in Plan something come from Yelp or Apple Maps.</p>
   </div>
 </footer>
+
+<script>
+  // 1938 + n, same as the app. The "88" in the markup is the no-JS fallback.
+  document.getElementById('evidence-years').textContent =
+    Math.max(88, new Date().getFullYear() - 1938);
+</script>
 
 </body>
 </html>
