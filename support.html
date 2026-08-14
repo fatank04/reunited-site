@@ -89,19 +89,7 @@
   </footer>
 </div>
 
-<script>
-  // Same no-backend waitlist as the landing page: composes an email in the
-  // visitor's own mail app so the site never holds anyone's contact info.
-  document.getElementById('waitlist').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = document.getElementById('contact').value.trim();
-    if (!v) return;
-    location.href = 'mailto:support@reunited.day'
-      + '?subject=' + encodeURIComponent('Reunited beta invite')
-      + '&body=' + encodeURIComponent(
-          'Please add me to the Reunited beta.\n\nReach me at: ' + v
-          + '\n\n(If you use TestFlight with a different email, say so here.)');
-  });
-</script>
+<script src="waitlist.js"></script>
+<script>window.reunitedWaitlist('waitlist');</script>
 </body>
 </html>

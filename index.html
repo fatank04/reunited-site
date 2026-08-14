@@ -264,25 +264,18 @@
   </div>
 </footer>
 
+<script src="waitlist.js"></script>
 <script>
   // 1938 + n, same as the app. The "88" in the markup is the no-JS fallback.
   document.getElementById('evidence-years').textContent =
     Math.max(88, new Date().getFullYear() - 1938);
 
-  // The waitlist deliberately has no backend: the site has no server and the
-  // brand's whole position is that there is nothing to breach. Submitting
-  // composes an email in the visitor's own mail app, with what they typed in
-  // the body, so the exchange is theirs from the first message.
-  document.getElementById('waitlist').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = document.getElementById('contact').value.trim();
-    if (!v) return;
-    location.href = 'mailto:support@reunited.day'
-      + '?subject=' + encodeURIComponent('Reunited beta invite')
-      + '&body=' + encodeURIComponent(
-          'Please add me to the Reunited beta.\n\nReach me at: ' + v
-          + '\n\n(If you use TestFlight with a different email, say so here.)');
-  });
+  // Waitlist. With WAITLIST_ENDPOINT set (a Formspree form), submission is
+  // in-page: POST, then a success line, no mail app. Empty, or on any
+  // network/endpoint failure, it falls back to composing an email in the
+  // visitor's own mail app — so the form works in every state and the site
+  // still runs with no backend of its own.
+  window.reunitedWaitlist('waitlist');
 </script>
 
 </body>

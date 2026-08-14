@@ -275,3 +275,8 @@ footer p + p { margin-top: var(--s1); }
 .legal h2 { font-size: 1.3rem; margin: var(--s4) 0 var(--s2); }
 .legal p, .legal li { color: var(--dim); margin-bottom: var(--s2); }
 .legal ul { padding-left: 22px; }
+
+/* Waitlist success line (in-page mode only) */
+.waitlist-done {
+  margin-top: var(--s4); font-weight: 600; color: var(--spruce);
+}
