@@ -13,15 +13,16 @@
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* Detail crop: the named-rep chip, shown without repeating the hero phone */
+  /* Detail card: a purpose-cut asset (assets/detail-today.png), not a CSS
+     crop of the hero shot. The old negative-margin crop sliced every line of
+     text mid-letter and buried the named chip it existed to show. If the
+     screenshot is retaken, recut the asset — do not bring the margins back. */
   .detail {
-    width: min(340px, 86vw); height: 360px; margin: 0 auto;
+    width: min(340px, 86vw); margin: 0 auto;
     border-radius: 28px; overflow: hidden; box-shadow: var(--shadow);
     background: var(--card);
   }
-  .detail img {
-    width: 130%; margin-left: -15%; margin-top: -52%; display: block;
-  }
+  .detail img { width: 100%; display: block; }
 </style>
 </head>
 <body>
@@ -108,8 +109,8 @@
     </div>
     <div class="phone-slot">
       <div class="detail">
-        <img src="assets/shot-today.png"
-             alt="Close-up of the named suggestion: Today, Maya? First ember.">
+        <img src="assets/detail-today.png"
+             alt="The daily rep card: a Go Deeper prompt with the named suggestion, Today: Maya.">
       </div>
     </div>
   </div>

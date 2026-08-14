@@ -85,17 +85,16 @@ nav {
   padding: 10px 20px; border-radius: 14px;
 }
 
-/* ---------- Sections: one rhythm for the whole page */
+/* ---------- Sections: one rhythm for the whole page. One value at every
+   width — the old desktop bump to 84px doubled to 168px of empty at each of
+   eight section boundaries, which read as gaps, not air. */
 section, header.hero { padding-block: var(--s5); }
-@media (min-width: 761px) {
-  section, header.hero { padding-block: var(--s6); }
-}
 .section-head { margin-bottom: var(--s4); }
 
 /* ---------- Chips (rep types) */
 .chip {
   display: inline-block; font-size: 0.7rem; font-weight: 800;
-  letter-spacing: 0.13em; color: #fff; border-radius: 999px;
+  letter-spacing: 0.13em; color: #fff; border-radius: 999px; /* unslop-ignore: the app's own capsule chip shape (Theme.swift), not a default */
   padding: 5px 14px; text-transform: uppercase;
 }
 .chip.ember { background: var(--ember); }
@@ -139,7 +138,7 @@ section, header.hero { padding-block: var(--s5); }
 /* ---------- Feature rows */
 .feature {
   display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5);
-  align-items: center; padding-block: var(--s4);
+  align-items: center; padding-block: var(--s2);
 }
 .feature .num {
   font-family: var(--serif); font-size: 0.95rem; color: var(--dim);
@@ -161,6 +160,13 @@ section, header.hero { padding-block: var(--s5); }
   border-radius: 44px; border: 10px solid var(--ink);
   box-shadow: 0 24px 60px rgba(42, 32, 24, 0.2);
 }
+/* Inside a feature row the phone drops to 260px: at 300 every row ran 693px
+   tall and left ~430px of dead air beside a 200px copy block, five times
+   over. Scaled down, not cropped — a height cap with object-fit sliced
+   screenshots mid-button. The hero phone keeps full size; the h1 beside it
+   fills that row. */
+.feature .phone { width: min(260px, 74vw); }
+.hero .phone { width: min(300px, 78vw); }
 
 /* ---------- Sample rep callout */
 .sample {
