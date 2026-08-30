@@ -76,9 +76,16 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: var(--s3) 0;
 }
+/* The lockup: mark then wordmark, one object on every page. page.css carries
+   the landing page's copy of this; the legal pages only load styles.css. */
 .wordmark {
+  display: inline-flex; align-items: center; gap: 0.42em;
   font-family: var(--serif); font-weight: 700; font-size: 1.7rem;
   color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
+}
+.wordmark .mark {
+  height: 0.82em; width: auto; flex: none;
+  fill: none; stroke: var(--ember); stroke-width: 2.6;
 }
 .nav-cta {
   font-size: 0.92rem; font-weight: 600; color: var(--bg-top);
