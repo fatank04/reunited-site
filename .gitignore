@@ -1,2 +1,5 @@
 # Local preview server config, not part of the deployed site
 .claude/
+
+# scrollcraft build workspace, not deployed
+scrollcraft/

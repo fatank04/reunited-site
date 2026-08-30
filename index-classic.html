@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Colon, not a dash: this has to match the App Store name exactly
+     ("Reunited: Stay in Touch Daily"), because the two show up side by
+     side in search results and a mismatch reads as a different product. -->
+<title>Reunited: Stay in Touch Daily</title>
+<meta name="description" content="One small social rep a day. Reunited aims it at one person by name, keeps everything on your phone, and is free forever for your first person.">
+<meta property="og:title" content="Reunited: Stay in Touch Daily">
+<meta property="og:description" content="One small social rep a day. Five days a message to send, two days to write about one person.">
+<meta property="og:url" content="https://reunited.day/">
+<meta property="og:image" content="https://reunited.day/assets/shot-today.png">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Detail card: a purpose-cut asset (assets/detail-named.png), not a CSS
+     crop of the hero shot. The old negative-margin crop sliced every line of
+     text mid-letter and buried the named chip it existed to show. If the
+     screenshot is retaken, recut the asset, and do not bring the margins back.
+
+     Recut 2026-08-29 from the hearth, not the daily rep. The section claims
+     the app names the person; the rep card names nobody, so the old crop
+     asserted the claim without showing it. The hearth banner is where the
+     naming actually happens. */
+  .detail {
+    width: min(340px, 86vw); margin: 0 auto;
+    border-radius: 28px; overflow: hidden; box-shadow: var(--shadow);
+    background: var(--card);
+  }
+  .detail img { width: 100%; display: block; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a class="wordmark" href="/">reunited</a>
+    <a class="nav-cta" href="#get">Get the app</a>
+  </nav>
+</div>
+
+<header class="hero wrap">
+  <div class="feature" style="padding-block: 0;">
+    <div class="copy hero-copy">
+      <h1>One small social rep a day.</h1>
+      <p class="lede">
+        Relationships fade by default. Reunited is two minutes a day against the
+        drift: five days a message to send, two days a page about one person
+        that only you read.
+      </p>
+      <span class="btn soon">Coming soon to the App&nbsp;Store</span>
+      <p class="dim small beta-line">
+        Now in private beta. <a href="#get" style="color: var(--ember);">Join the list</a>.
+      </p>
+    </div>
+    <div class="phone-slot">
+      <img class="phone" src="assets/shot-today.png"
+           alt="Reunited's daily rep screen: a Go Deeper prompt, the day's streak, and the actions under it">
+    </div>
+  </div>
+</header>
+
+<section class="wrap">
+  <div class="card evidence">
+    <div class="stat">
+      <!-- 1938 + n. The app computes this (OnboardingView.yearsOfEvidence)
+           after shipping "86" into 2026; a static page can't, so the script
+           below keeps it honest and this literal is the no-JS fallback.
+           Bump it each January. -->
+      <span class="big" id="evidence-years">88</span>
+      <span class="stat-label">years of evidence</span>
+    </div>
+    <p class="dim">
+      The world's longest study of adult life has followed the same families
+      since 1938. Its clearest finding: close relationships, more than wealth,
+      fame, or class, keep people healthy and happy.
+    </p>
+    <p class="cite">Harvard Study of Adult Development · Waldinger &amp; Schulz</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <h2>A week, not seven of the same day.</h2>
+    <p class="lede">Four days ask for a message. Saturday asks you to show up. Two ask for
+    nobody at all. Every one of them takes about two minutes.</p>
+  </div>
+  <div class="card-grid cols-5">
+    <div class="card">
+      <span class="chip ember">Reconnect</span>
+      <p class="dim">Revive a tie that's going quiet, with an opener written for you.</p>
+    </div>
+    <div class="card">
+      <span class="chip spruce">Go deeper</span>
+      <p class="dim">One question that gets past small talk with someone you love.</p>
+    </div>
+    <div class="card">
+      <span class="chip rose">Say thanks</span>
+      <p class="dim">Send the compliment you keep not sending.</p>
+    </div>
+    <div class="card">
+      <span class="chip ochre">In person</span>
+      <p class="dim">Saturdays ask for presence, not text. Coffee beats fifty messages.</p>
+    </div>
+    <div class="card">
+      <span class="chip slate">Reflect</span>
+      <p class="dim">Monday and Wednesday, nobody gets a text. You write a few sentences
+      about one person, and nothing you write there is ever sent.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <h2>Monday's writing opens Tuesday's message.</h2>
+    <p class="lede">On a reflect day you write about one person and it stays on your phone.
+    The next message that goes their way starts from your own sentence, not a template.</p>
+  </div>
+  <div class="card-grid cols-2 loop">
+    <div class="card">
+      <span class="chip slate">Monday</span>
+      <p class="rep">What did you teach me that I still use?</p>
+      <p class="dim">Rarely advice. Usually a habit I picked up without ever noticing whose
+      it was. Nobody reads this but you.</p>
+    </div>
+    <div class="card">
+      <span class="chip ember">Tuesday</span>
+      <p class="rep">Hey Maya, you've been on my mind this week. You taught me to write the
+      hard email before coffee. How've you been?</p>
+      <p class="dim">Your sentence, carried across whole. Reunited opens Messages with it.
+      You change what you want and send it yourself.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="feature">
+    <div class="copy">
+      <div class="num">01</div>
+      <h2>It names the person, not just the task.</h2>
+      <p>"Reconnect with an old friend" still leaves the hard part to you.
+      Reunited says who: whoever in your circle has drifted longest. Tap once and
+      the message is drafted. You edit until it sounds like you, then send.</p>
+    </div>
+    <div class="phone-slot">
+      <div class="detail">
+        <img src="assets/detail-named.png"
+             alt="The hearth naming who has gone quiet longest, Priya at two months, above the circle's embers.">
+      </div>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="phone-slot">
+      <img class="phone" src="assets/shot-done.png"
+           alt="The done screen after a rep: a checkmark and the word Reunited.">
+    </div>
+    <div class="copy">
+      <div class="num">02</div>
+      <h2>Every day ends the same way.</h2>
+      <p>Send the message, or write the page, and the screen says the only word
+      that matters: Reunited. Two minutes, one person, and that feeling, every
+      single day.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="copy">
+      <div class="num">03</div>
+      <h2>Your people, as embers.</h2>
+      <p>Everyone you're keeping lights an ember. Send a rep and it glows.
+      Let the weeks pass and it dims, gently. No guilt, no red badges,
+      just the true state of your ties, made visible.</p>
+    </div>
+    <div class="phone-slot">
+      <img class="phone" src="assets/shot-embers.png"
+           alt="The hearth screen: each person in your circle as an ember that glows when you reach out">
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="copy">
+      <div class="num">04</div>
+      <h2>Stuck on a reply? It happens to everyone.</h2>
+      <p>They wrote back. You froze. Share their message to Reunited and get three
+      short ways to answer, written by AI that runs entirely on your iPhone.
+      The message never leaves your phone, and the send is always yours.</p>
+    </div>
+    <div class="phone-slot">
+      <img class="phone" src="assets/shot-coach.png"
+           alt="Stuck on a reply: paste their message and get three ways to answer">
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="phone-slot">
+      <img class="phone" src="assets/shot-plan.png"
+           alt="Plan something: coffee spots near Montclair ranked by rating, each with a button to text the plan">
+    </div>
+    <div class="copy">
+      <div class="num">05</div>
+      <h2>Then take it off the screen.</h2>
+      <p>Saturday asks for a room, not a text. Pick a person and a plan, and
+      Reunited finds a well-reviewed spot nearby and
+      writes the invite: "Been too long. Coffee at Paper Plane this weekend?"
+      A text keeps a tie alive. Being in the same room brings it back.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <h2>Private by architecture, not by promise.</h2>
+  </div>
+  <div class="card-grid cols-3">
+    <div class="card">
+      <h3>Your contacts stay yours.</h3>
+      <p class="dim">Reunited never asks for Contacts permission. You hand it individual people
+      through Apple's picker; it cannot see the rest of your address book.</p>
+    </div>
+    <div class="card">
+      <h3>No account. No server.</h3>
+      <p class="dim">Nothing to sign up for, nothing to breach. Your circle, streaks, and
+      answers live on your phone and nowhere else.</p>
+    </div>
+    <div class="card">
+      <h3>AI that stays home.</h3>
+      <p class="dim">Reply suggestions run on Apple's on-device model. The texts you're
+      answering are never uploaded, to us or anyone.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="pricing">
+  <div class="section-head">
+    <h2>Free forever. Hearth if you want more.</h2>
+    <p class="lede">Nothing you get for free ever moves behind the paywall. That's a pledge, in writing.</p>
+  </div>
+  <div class="plans">
+    <div class="card">
+      <h3>Free</h3>
+      <p class="price">$0<span class="per"> forever</span></p>
+      <p class="dim small">no trial to lapse, nothing to cancel</p>
+      <ul>
+        <li>The daily rep, every day</li>
+        <li>Both reflection days, every week</li>
+        <li>One person in your circle, forever</li>
+        <li>Home-screen widget</li>
+        <li>Streaks with a weekly grace day</li>
+        <li>One gentle reminder, at your time</li>
+      </ul>
+    </div>
+    <div class="card featured">
+      <span class="trial-chip">7-day free trial</span>
+      <h3>Hearth</h3>
+      <p class="price">$39.99<span class="per">/yr</span></p>
+      <p class="dim small">or $89.99 once, forever</p>
+      <ul>
+        <li>The rest of your circle, aimed by name</li>
+        <li>One-tap sending with drafted openers</li>
+        <li>Reply Coach, on-device AI</li>
+        <li>Plan something: spots and invites</li>
+        <li>Call prep before you dial</li>
+        <li>The hearth, history, widget themes</li>
+        <li>A second rep on the days you want one</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap cta" id="get">
+  <!-- Was a Peaches & Herb lyric, dropped 2026-08-29. Quoting a recognisable
+       lyric to sell a product named after the same song is exposure we do not
+       need on the page a visitor sees last. This line mirrors the first line
+       of the App Store description on purpose: same hook, both surfaces. -->
+  <h2>You already know who.</h2>
+  <p class="lede">You thought of someone before you got to the bottom of this page.
+  Reunited is in private beta ahead of its App Store release. Leave a line and
+  you'll hear when a spot opens.</p>
+  <form class="waitlist" id="waitlist" autocomplete="on">
+    <input type="text" name="contact" id="contact" inputmode="email"
+           autocomplete="email" enterkeyhint="send"
+           autocapitalize="off" autocorrect="off" spellcheck="false"
+           placeholder="Email or phone number" aria-label="Your email or phone number"
+           aria-describedby="waitlist-error" required>
+    <button class="btn primary" type="submit">Join the beta</button>
+  </form>
+  <p class="waitlist-error" id="waitlist-error" role="alert" hidden></p>
+  <p class="dim small waitlist-note">
+    Goes straight to <a href="mailto:support@reunited.day">support@reunited.day</a>.
+    One email when a spot opens, nothing else.
+  </p>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+    </div>
+    <p>© 2026 Foresight Solutions Group LLC. Made in New Jersey.</p>
+    <p class="small">Spot listings in Plan something come from Yelp or Apple Maps.</p>
+  </div>
+</footer>
+
+<script src="waitlist.js"></script>
+<script>
+  // 1938 + n, same as the app. The "88" in the markup is the no-JS fallback.
+  document.getElementById('evidence-years').textContent =
+    Math.max(88, new Date().getFullYear() - 1938);
+
+  // Waitlist. With WAITLIST_ENDPOINT set (a Formspree form), submission is
+  // in-page: POST, then a success line, no mail app. Empty, or on any
+  // network/endpoint failure, it falls back to composing an email in the
+  // visitor's own mail app — so the form works in every state and the site
+  // still runs with no backend of its own.
+  window.reunitedWaitlist('waitlist');
+</script>
+
+</body>
+</html>
