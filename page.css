@@ -234,3 +234,57 @@ body.is-night .folio { color: #cbb9a4; opacity: 0.7; }
   .plate--seal { width: min(120px, 32vw); }
   .evidence-line { font-size: 0.95rem; }
 }
+
+/* ---- The mark and the masthead.
+   Drawn, not an image file. The app icon is a rounded square with its own
+   gradient, which on a page reads as an App Store badge rather than a logo.
+   The rings are the meaningful part: two lives that overlap. */
+.mark {
+  height: 1.4em; width: auto; overflow: visible;
+  fill: none; stroke: var(--sc-accent); stroke-width: 2.6;
+  flex: none;
+}
+.masthead {
+  display: flex; align-items: center; gap: 0.5em;
+  margin-bottom: clamp(22px, 4vh, 44px);
+}
+.wordmark {
+  font-family: var(--sc-font-display); font-weight: 600;
+  font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: -0.015em;
+  color: var(--sc-ink);
+}
+.masthead--foot { margin: 0.6em 0 0.9em; opacity: 0.85; }
+.masthead--foot .mark { stroke-width: 2.8; }
+.masthead--foot .wordmark { font-size: 1.05rem; }
+
+/* ---- A title page that commits.
+   The old hero topped out near 6rem with a quiet lede under it, which read as
+   restraint rather than confidence. This goes considerably larger, tightens
+   the leading, and accents the operative word. */
+.sc-display--hero {
+  font-size: clamp(3.3rem, 11.5vw, 8.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  max-width: 14ch;
+}
+.sc-display--hero em { font-style: normal; color: var(--sc-accent); }
+
+/* The definitional line. The page previously opened without ever saying what
+   the product is; this says it before anything else has to be believed. */
+.standfirst {
+  margin-top: clamp(18px, 3vh, 30px);
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  line-height: 1.35; letter-spacing: -0.012em;
+  max-width: 24ch; color: var(--sc-ink);
+  text-wrap: balance;
+}
+.title-page__tail {
+  margin-top: clamp(12px, 2vh, 20px);
+  max-width: 34ch; opacity: 0.85;
+}
+
+@media (max-width: 760px) {
+  .sc-display--hero { font-size: clamp(2.9rem, 13.5vw, 4.4rem); max-width: 11ch; }
+  .standfirst { font-size: clamp(1.1rem, 4.6vw, 1.35rem); max-width: 27ch; }
+  .masthead { margin-bottom: 20px; }
+}

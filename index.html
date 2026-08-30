@@ -35,13 +35,35 @@
   <section class="chapter chapter--i" data-sc-act="flow" data-sc-span="1.4"
            data-sc-waypoint="I|You already know who">
     <div class="sc-wrap title-page">
-      <p class="sc-label">Reunited</p>
-      <h1 class="sc-display sc-display--xl" data-sc-kinetic="lines" data-sc-cue="0 0.98 0">
-        You already know who.
+      <!-- Masthead. Editorial title pages carry the publication's mark, so
+           this is native to the grammar rather than the media the grammar
+           bans above the fold. The mark is the app icon's two overlapping
+           rings: two lives that intersect. The icon's serif "r" is dropped
+           here because the wordmark beside it already says the letter. -->
+      <div class="masthead">
+        <svg class="mark" viewBox="0 0 64 40" aria-hidden="true" focusable="false">
+          <circle cx="24" cy="20" r="15" />
+          <circle cx="40" cy="20" r="15" />
+        </svg>
+        <span class="wordmark">reunited</span>
+      </div>
+
+      <!-- No data-sc-kinetic here on purpose. The line splitter rebuilds the
+           heading from textContent, which destroys the <em>, and at this size
+           a two-tone headline hits harder than lines assembling once on load.
+           The page keeps five device families without it. -->
+      <h1 class="sc-display sc-display--hero" data-sc-cue="0 0.98 0">
+        You already know <em>who</em>.
       </h1>
-      <p class="sc-lede">
-        You thought of someone before you finished that line. It has been a
-        while. Neither of you meant it to be.
+
+      <p class="standfirst">
+        One small rep a day, aimed at one person by name. Two minutes against
+        a drift nobody chose.
+      </p>
+
+      <p class="sc-lede title-page__tail">
+        You thought of someone before you finished that line. Neither of you
+        meant it to be this long.
       </p>
     </div>
   </section>
@@ -293,6 +315,13 @@
       </p>
 
       <hr class="sc-rule">
+      <div class="masthead masthead--foot">
+        <svg class="mark" viewBox="0 0 64 40" aria-hidden="true" focusable="false">
+          <circle cx="24" cy="20" r="15" />
+          <circle cx="40" cy="20" r="15" />
+        </svg>
+        <span class="wordmark">reunited</span>
+      </div>
       <p class="imprint">
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
