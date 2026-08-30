@@ -16,10 +16,15 @@
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* Detail card: a purpose-cut asset (assets/detail-today.png), not a CSS
+  /* Detail card: a purpose-cut asset (assets/detail-named.png), not a CSS
      crop of the hero shot. The old negative-margin crop sliced every line of
      text mid-letter and buried the named chip it existed to show. If the
-     screenshot is retaken, recut the asset — do not bring the margins back. */
+     screenshot is retaken, recut the asset, and do not bring the margins back.
+
+     Recut 2026-08-29 from the hearth, not the daily rep. The section claims
+     the app names the person; the rep card names nobody, so the old crop
+     asserted the claim without showing it. The hearth banner is where the
+     naming actually happens. */
   .detail {
     width: min(340px, 86vw); margin: 0 auto;
     border-radius: 28px; overflow: hidden; box-shadow: var(--shadow);
@@ -53,7 +58,7 @@
     </div>
     <div class="phone-slot">
       <img class="phone" src="assets/shot-today.png"
-           alt="Reunited's daily rep screen: a Go Deeper prompt with a suggested person to send it to">
+           alt="Reunited's daily rep screen: a Go Deeper prompt, the day's streak, and the actions under it">
     </div>
   </div>
 </header>
@@ -142,8 +147,8 @@
     </div>
     <div class="phone-slot">
       <div class="detail">
-        <img src="assets/detail-today.png"
-             alt="The daily rep card: a Go Deeper prompt with the named suggestion, Today: Maya.">
+        <img src="assets/detail-named.png"
+             alt="The hearth naming who has gone quiet longest, Priya at two months, above the circle's embers.">
       </div>
     </div>
   </div>
@@ -193,7 +198,7 @@
   <div class="feature">
     <div class="phone-slot">
       <img class="phone" src="assets/shot-plan.png"
-           alt="Plan something: coffee spots near Montclair ranked by rating, with a drafted invite">
+           alt="Plan something: coffee spots near Montclair ranked by rating, each with a button to text the plan">
     </div>
     <div class="copy">
       <div class="num">05</div>
