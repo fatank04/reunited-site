@@ -1,4 +1,4 @@
-/* Reunited — the signature move: "the name".
+/* Reunited: the signature move: "the name".
  *
  * The visitor types one first name in chapter II. It threads through chapter
  * IV (the peak) and chapter V, and then chapter V tells them the true thing:

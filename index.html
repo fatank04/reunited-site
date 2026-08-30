@@ -48,7 +48,7 @@
 
   <!-- II. THE DRIFT. The frame holds while the cost is named, then the field.
        Signature move lives here. -->
-  <section class="chapter chapter--ii" data-sc-act="pin" data-sc-span="1.8"
+  <section class="chapter chapter--ii" data-sc-act="pin" data-sc-span="1.8" data-sc-mobile-unpin
            data-sc-waypoint="II|The hundred days">
     <div data-sc-stage class="sc-wrap drift">
       <div class="drift__argument">
@@ -68,7 +68,7 @@
       <p class="evidence-line" data-sc-cue="0.30 0.98">
         The longest study of adult life has followed the same families since
         1938. That is
-        <span class="tally" data-sc-count="88" data-sc-count-at="0.34 0.6">88</span>
+        <span class="tally">88</span>
         years of evidence that close relationships, more than money or fame,
         are what keep people well.
       </p>
@@ -220,7 +220,7 @@
 
   <!-- VI. THE PLEDGE. pin: the free tier lands, then Hearth arrives after it.
        Pin appears at II, IV and VI and never twice in a row. -->
-  <section class="chapter chapter--pledge" data-sc-act="pin" data-sc-span="1.6"
+  <section class="chapter chapter--pledge" data-sc-act="pin" data-sc-span="1.6" data-sc-mobile-unpin
            data-sc-waypoint="VI|Free forever">
     <div data-sc-stage class="sc-wrap pledge">
       <h2 class="sc-display sc-display--md" data-sc-cue="0 0.98 0">
@@ -308,7 +308,18 @@
 </main>
 
 <script src="scrollcraft.js"></script>
-<script>ScrollCraft.mount(document.body);</script>
+<script>
+  /* A pinned stage is locked to one viewport. Chapters II and VI carry more
+     than 844px of content, so on a phone they were clipped at BOTH ends: the
+     opening line and the closing line simply never rendered. Unpin them below
+     760px and they flow instead, keeping every cue. Desktop is untouched. */
+  if (window.matchMedia('(max-width: 760px)').matches) {
+    document.querySelectorAll('[data-sc-mobile-unpin]').forEach(function (el) {
+      el.setAttribute('data-sc-act', 'flow');
+    });
+  }
+  ScrollCraft.mount(document.body);
+</script>
 <script src="page.js"></script>
 <script src="waitlist.js"></script>
 <script>window.reunitedWaitlist('waitlist');</script>
