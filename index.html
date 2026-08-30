@@ -282,9 +282,13 @@
   you'll hear when a spot opens.</p>
   <form class="waitlist" id="waitlist" autocomplete="on">
     <input type="text" name="contact" id="contact" inputmode="email"
-           placeholder="Email or phone number" aria-label="Your email or phone number" required>
+           autocomplete="email" enterkeyhint="send"
+           autocapitalize="off" autocorrect="off" spellcheck="false"
+           placeholder="Email or phone number" aria-label="Your email or phone number"
+           aria-describedby="waitlist-error" required>
     <button class="btn primary" type="submit">Join the beta</button>
   </form>
+  <p class="waitlist-error" id="waitlist-error" role="alert" hidden></p>
   <p class="dim small waitlist-note">
     Goes straight to <a href="mailto:support@reunited.day">support@reunited.day</a>.
     One email when a spot opens, nothing else.

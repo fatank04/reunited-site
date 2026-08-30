@@ -238,21 +238,48 @@ section, header.hero { padding-block: var(--s5); }
 
 /* ---------- Waitlist capture */
 .waitlist {
-  display: flex; gap: var(--s2); justify-content: center; flex-wrap: wrap;
+  display: flex; gap: var(--s2); justify-content: center;
+  align-items: stretch; flex-wrap: wrap;
   margin-top: var(--s4);
 }
 .waitlist input {
-  font: inherit; font-size: 1rem; color: var(--ink);
+  /* line-height 1.25, not the body's 1.65. Inheriting the prose leading made
+     the field 57px against the button's 53 and left the two visibly unequal. */
+  font: inherit; font-size: 1rem; line-height: 1.25; color: var(--ink);
   background: var(--card); border: 1.5px solid rgba(42, 32, 24, 0.18);
   border-radius: 16px; padding: 14px 18px; width: min(340px, 100%);
 }
-.waitlist input:focus {
+.waitlist input:focus-visible {
   outline: 2px solid var(--ember); outline-offset: 1px; border-color: transparent;
 }
 .waitlist input::placeholder { color: var(--dim); opacity: 0.7; }
-.waitlist .btn { margin-top: 0; }
-.waitlist-note { margin-top: var(--s2); }
+.waitlist input[aria-invalid="true"] { border-color: var(--rose); }
+
+/* Has to out-specify `.cta .btn { margin-top: var(--s4) }`. That rule matches
+   at the same specificity and sits later in the file, so it was winning and
+   dropping the button 32px below the field it belongs beside. That single
+   stray margin also set the flex line to 85px, which is what stretched the
+   input and made the whole row look broken. */
+.cta .waitlist .btn, .waitlist .btn {
+  margin-top: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  line-height: 1.25;
+}
+
+/* balance stops the last line stranding one or two words under a full one,
+   which is what made "nothing else." look like a mistake. */
+.waitlist-note { margin-top: var(--s2); text-wrap: balance; }
 .waitlist-note a { color: var(--ember); }
+.waitlist-error {
+  margin-top: var(--s2); color: var(--rose); font-weight: 600; font-size: 0.9rem;
+}
+/* `p { max-width: 34em }` caps these boxes. Without auto side margins the box
+   pinned itself to the left of a centred section while the text centred
+   inside it, throwing the note 253px off the form's axis. That offset is what
+   read as "the bottom of the page is crooked". */
+.cta .waitlist-note,
+.cta .waitlist-error,
+.cta .waitlist-done { margin-inline: auto; }
 
 /* ---------- Buttons */
 .btn {
@@ -272,12 +299,15 @@ section, header.hero { padding-block: var(--s5); }
 
 /* ---------- Final CTA */
 .cta { text-align: center; }
-.cta .lede { margin: var(--s3) auto 0; }
+.cta .lede { margin: var(--s3) auto 0; text-wrap: balance; }
 .cta .btn { margin-top: var(--s4); }
 
 /* ---------- Footer */
 footer {
-  padding: var(--s5) 0 var(--s6); color: var(--dim); font-size: 0.9rem;
+  padding: var(--s4) 0 var(--s5); color: var(--dim); font-size: 0.9rem;
+  /* The hairline does the separating. A margin on top of it as well just
+     reopened the dead space it was added to close. */
+  border-top: 1px solid rgba(42, 32, 24, 0.10);
 }
 footer a { color: var(--dim); }
 footer .links {
@@ -296,4 +326,16 @@ footer p + p { margin-top: var(--s1); }
 /* Waitlist success line (in-page mode only) */
 .waitlist-done {
   margin-top: var(--s4); font-weight: 600; color: var(--spruce);
+}
+
+/* ---------- Waitlist on a phone
+   Has to come after `.waitlist input`: same specificity, so source order
+   decides, and from further up the file this lost and left a 340px field
+   in a 350px column. */
+@media (max-width: 760px) {
+  .waitlist input,
+  .waitlist .btn { width: 100%; }
+  /* Stacked and full-width, unequal heights read as a mistake rather than
+     a hierarchy. */
+  .waitlist input { min-height: 54px; }
 }

@@ -72,9 +72,13 @@
     Leave an email or phone number and you'll hear back when a spot opens.</p>
     <form class="waitlist" id="waitlist">
       <input type="text" name="contact" id="contact" inputmode="email"
-             placeholder="Email or phone number" aria-label="Your email or phone number" required>
+             autocomplete="email" enterkeyhint="send"
+             autocapitalize="off" autocorrect="off" spellcheck="false"
+             placeholder="Email or phone number" aria-label="Your email or phone number"
+             aria-describedby="waitlist-error" required>
       <button class="btn primary" type="submit">Join the beta</button>
     </form>
+    <p class="waitlist-error" id="waitlist-error" role="alert" hidden></p>
     <p class="dim small waitlist-note">Goes straight to support@reunited.day. If you use TestFlight
     under a different address, mention it.</p>
   </div>
